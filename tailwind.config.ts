@@ -21,7 +21,7 @@ export default {
         headlines: "var(--color-headlines)",
         subtitle: "var(--color-subtitle)",
         info: "var(--color-info)",
-        navItem: "var(--color-nav-item)",
+        navItem: "#8E8B8B",
         navActive: "var(--color-primary)",
         error: "var(--color-error)",
         border: "var(--color-border)",
