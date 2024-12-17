@@ -2,34 +2,34 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
+  const url = request.nextUrl;
+  const pathname = url.pathname;
 
-  // Get the current value of the 'isLoggedIn' cookie
-  // const isLoggedIn = request.cookies.get("isLoggedIn")?.value === "true";
-   const isLoggedIn = false;
+  // Mocked login status for testing; replace with actual cookie check
+  const isLoggedIn = true; // Replace with: request.cookies.get("isLoggedIn")?.value === "true";
 
-  // Redirect from the home page to login if not logged in
-  if (request.nextUrl.pathname === "/") {
+  // Public routes (authentication pages)
+  // const publicRoutes = ["/auth/login", "/auth/forget-password"];
+
+  // Protected routes (dashboard and admin features)
+  // const protectedRoutes = ["/admin"];
+ if (pathname === "/") {
     return NextResponse.redirect(new URL("/auth/login", request.url));
   }
-  if (isLoggedIn && request.nextUrl.pathname === "/auth/login") {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
-  }
-
-  // Protect dashboard and other routes, redirect to login if not logged in
-  if (!isLoggedIn && request.nextUrl.pathname.startsWith("/dashboard")) {
-    return NextResponse.redirect(new URL("/auth/login", request.url));
-  }
-
-  // Handle unknown routes (any route not defined in the 'knownRoutes' list)
-  const knownRoutes = ["/", "/auth/login", "/auth/register", "/dashboard"];
-  if (!knownRoutes.some(route => request.nextUrl.pathname.startsWith(route)) && request.nextUrl.pathname !== "/") {
+  // Redirect unauthenticated users from protected routes to login
+  if (!isLoggedIn &&pathname.startsWith("/admin")) {
     return NextResponse.redirect(new URL("/auth/login", request.url));
   }
 
-  // Allow the request to proceed if logged in or on a known route
+  // Redirect logged-in users from auth pages to the dashboard
+  if (isLoggedIn && pathname.startsWith("/auth")) {
+    return NextResponse.redirect(new URL("/admin/dashboard", request.url));
+  }
+
+  // Allow the request to proceed
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/", "/auth/:path*", "/dashboard/:path*"], // Apply to the home route and dashboard routes
+  matcher: ["/","/auth/:path*", "/admin/:path*"], // Apply to authentication and admin routes only
 };

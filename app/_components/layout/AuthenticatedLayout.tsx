@@ -5,7 +5,7 @@ export default function AuthenticatedLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <main className="flex w-full">
+    <main className="flex w-full bg-foreground">
       <aside className="w-1/6">
         <Sidebar />
       </aside>
@@ -15,7 +15,7 @@ export default function AuthenticatedLayout({
           <TopBar />
         </div>
 
-        <div className="flex flex-col gap-4">{children}</div>
+        <div className="flex flex-col gap-4 p-8">{children}</div>
       </section>
     </main>
   );
