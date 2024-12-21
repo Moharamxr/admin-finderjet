@@ -34,7 +34,7 @@ const Hotels: React.FC = () => {
           extraStyle="w-20"
         />
       </div>
-      <DynamicTable headers={hotelTableHeaders} data={hotelTableData} type="hotels" />
+      <DynamicTable headers={hotelTableHeaders} data={hotelTableData} type="hotels" redirectedRoute='/admin/hotels' />
     </div>
   );
 };

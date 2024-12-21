@@ -2,17 +2,17 @@ import BackIcon from "@/app/_assets/icons/BackIcon";
 import PrimaryBtn from "@/app/_components/buttons/PrimaryBtn";
 import DataFelid from "@/app/_components/present-data/DataFelid";
 import DynamicTable from "@/app/_components/tables/DynamicTable";
-import { hotelTableData, hotelTableHeaders } from "@/app/_data/static-data";
+import { airlineTableData, airlineTableHeaders } from "@/app/_data/static-data";
 import Link from "next/link";
 
-type HotelDetailsProps = {
-  params: { hotelHeadID: string };
+type AirlineDetailsProps = {
+  params: { airlineHeadID: string };
 };
 
-const HotelDetails = async ({ params }: HotelDetailsProps) => {
-  const { hotelHeadID } = await params;
+const AirlineDetails = async ({ params }: AirlineDetailsProps) => {
+  const { airlineHeadID } = await params;
 
-  if (!hotelHeadID) {
+  if (!airlineHeadID) {
     return <p>Loading...</p>;
   }
 
@@ -21,19 +21,19 @@ const HotelDetails = async ({ params }: HotelDetailsProps) => {
       <div className=" bg-white p-8 rounded-2xl shadow-sm  space-y-5">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-5">
-            <Link href="/admin/hotels">
+            <Link href="/admin/airlines">
               <BackIcon />
             </Link>
-            <h1 className="mb-5">Hotel Headquarters Details {hotelHeadID}</h1>
+            <h1 className="mb-5">Airline Headquarters Details {airlineHeadID}</h1>
           </div>
-          <Link href={`/admin/hotels/edit/head-quarter/${hotelHeadID}`}>
+          <Link href={`/admin/airlines/edit/head-quarter/${airlineHeadID}`}>
             <PrimaryBtn bgColor="primary" textColor="white">
               Edit
             </PrimaryBtn>
           </Link>
         </div>
         <div className="space-y-3">
-          <h3>hotel information</h3>
+          <h3>Airline information</h3>
           <div className="flex justify-between w-full">
             <DataFelid label="Contact number" value="Contact number" />
             <DataFelid label="Address" value="Address" />
@@ -51,17 +51,17 @@ const HotelDetails = async ({ params }: HotelDetailsProps) => {
           </div>
         </div>
       </div>
-      <h3>Hotel Branches</h3>
+      <h3>Airline Branches</h3>
 
       <DynamicTable
-        type="hotels"
+        type="airlines"
         showCheckbox={false}
-        headers={hotelTableHeaders}
-        data={hotelTableData}
-        redirectedRoute={`/admin/hotels/${hotelHeadID}/branch`}
+        headers={airlineTableHeaders}
+        data={airlineTableData}
+        redirectedRoute={`/admin/airlines/${airlineHeadID}/branch`}
       />
     </div>
   );
 };
 
-export default HotelDetails;
+export default AirlineDetails;

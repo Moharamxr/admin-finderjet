@@ -1,13 +1,10 @@
 import BackIcon from "@/app/_assets/icons/BackIcon";
+import FormRow from "@/app/_components/form/FormRow";
 import TextInput from "@/app/_components/inputs/TextInput";
 import Link from "next/link";
 import React from "react";
 
-const FormRow = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex md:flex-row flex-col justify-between items-center gap-10">
-    {children}
-  </div>
-);
+
 type HotelDetailsProps = {
   params: { branchID: string };
 };

@@ -4,21 +4,22 @@ import FormRow from "@/app/_components/form/FormRow";
 import TextInput from "@/app/_components/inputs/TextInput";
 import Link from "next/link";
 import React from "react";
-
-type HotelDetailsProps = {
-  params: { headquarterID: string };
+type AirportDetailsProps = {
+  params: {
+    airportID: string;
+  };
 };
-const EditNewHeadQuarter = async ({ params }: HotelDetailsProps) => {
-  const { headquarterID } = await params;
+const EditAirport = async ({ params }: AirportDetailsProps) => {
+  const { airportID } = await params;
   return (
     <div className="flex flex-col gap-5 max-w-6xl">
       <div className="flex items-center gap-5">
-        <Link href={`/admin/hotels/${headquarterID}`}>
+        <Link href={`/admin/airports/${airportID}`}>
           <BackIcon />
         </Link>
-        <h1 className="mb-5">Edit New Head quarter {headquarterID}</h1>
+        <h1 className="mb-5">Edit New Head quarter {airportID}</h1>
       </div>
-      <h3>Hotel Information</h3>
+      <h3>Airport Information</h3>
       <FormRow>
         <TextInput label="Hotel Name" placeholder="Enter hotel name" />
         <TextInput label="Number Contact" placeholder="Number Contact" />
@@ -39,4 +40,4 @@ const EditNewHeadQuarter = async ({ params }: HotelDetailsProps) => {
   );
 };
 
-export default EditNewHeadQuarter;
+export default EditAirport;

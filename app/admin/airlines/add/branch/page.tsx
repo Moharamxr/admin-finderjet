@@ -10,14 +10,14 @@ const AddNewBranch = () => {
   return (
     <div className="flex flex-col gap-5">
       <div className="flex items-center gap-5">
-        <Link href="/admin/hotels">
+        <Link href="/admin/airlines">
         <BackIcon />
         </Link>
-        <h1 className="mb-5">Add New Hotel Branch</h1>
+        <h1 className="mb-5">Add New Airline Branch</h1>
       </div>
-      <h3>Hotel Information</h3>
+      <h3>Airline Information</h3>
       <FormRow>
-        <TextInput label="Hotel Name" placeholder="Enter hotel name" />
+        <TextInput label="Airline Name" placeholder="Enter Airline name" />
         <TextInput label="Number Contact" placeholder="Number Contact" />
       </FormRow>
       <FormRow>

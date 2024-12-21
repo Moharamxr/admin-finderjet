@@ -5,22 +5,22 @@ import TextInput from "@/app/_components/inputs/TextInput";
 import Link from "next/link";
 import React from "react";
 
-type HotelDetailsProps = {
+type AirlineDetailsProps = {
   params: { headquarterID: string };
 };
-const EditNewHeadQuarter = async ({ params }: HotelDetailsProps) => {
+const EditNewHeadQuarter = async ({ params }: AirlineDetailsProps) => {
   const { headquarterID } = await params;
   return (
     <div className="flex flex-col gap-5 max-w-6xl">
       <div className="flex items-center gap-5">
-        <Link href={`/admin/hotels/${headquarterID}`}>
+        <Link href={`/admin/airlines/${headquarterID}`}>
           <BackIcon />
         </Link>
         <h1 className="mb-5">Edit New Head quarter {headquarterID}</h1>
       </div>
-      <h3>Hotel Information</h3>
+      <h3>Airline Information</h3>
       <FormRow>
-        <TextInput label="Hotel Name" placeholder="Enter hotel name" />
+        <TextInput label="Airline Name" placeholder="Enter Airline name" />
         <TextInput label="Number Contact" placeholder="Number Contact" />
       </FormRow>
       <FormRow>

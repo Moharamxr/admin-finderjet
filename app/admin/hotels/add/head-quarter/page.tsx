@@ -1,13 +1,10 @@
 import BackIcon from "@/app/_assets/icons/BackIcon";
 import PrimaryBtn from "@/app/_components/buttons/PrimaryBtn";
+import FormRow from "@/app/_components/form/FormRow";
 import TextInput from "@/app/_components/inputs/TextInput";
 import Link from "next/link";
 import React from "react";
-const FormRow = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex md:flex-row flex-col justify-between items-center gap-10">
-    {children}
-  </div>
-);
+
 const AddNewHeadQuarter = () => {
   return (
     <div className="flex flex-col gap-5 max-w-6xl">
